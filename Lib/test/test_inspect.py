@@ -689,7 +689,7 @@ class TestBuggyCases(GetSourceBase):
             _, lnum = inspect.findsource(co)
             self.assertEqual(lnum, 3)
             linecache.cache[co.co_filename] = (
-                1, None, [""] * (lnum - 1), co.co_filename
+                1, None, [""] * lnum, co.co_filename
             )
             _, lnum = inspect.findsource(co)
             self.assertEqual(lnum, 0)  # maybe OSError?
